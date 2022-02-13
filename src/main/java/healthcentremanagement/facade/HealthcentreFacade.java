@@ -40,8 +40,8 @@ public class HealthcentreFacade {
         taskService = new TaskService();
     }
 
-    public void login() {
-        login = scannerService.loginScanner();
+    public void login(String username, String password) {
+        login = scannerService.loginScanner(username, password);
     }
 
     public void addNewAccount() {

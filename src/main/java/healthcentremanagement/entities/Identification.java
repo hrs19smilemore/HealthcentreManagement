@@ -30,6 +30,10 @@ public class Identification {
     @OneToOne(mappedBy = "identification", cascade = CascadeType.REMOVE)
     private Employee employee;
 
+    public Identification(String number) {
+        this.number = number;
+    }
+
     @Override
     public String toString() {
         return "Identification{" +

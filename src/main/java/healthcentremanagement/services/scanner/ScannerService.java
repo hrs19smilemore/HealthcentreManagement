@@ -35,11 +35,7 @@ public class ScannerService {
     List<Healthcentre> healthcentres;
 
     //Login
-    public boolean loginScanner(){
-        System.out.println("Enter username:");
-        username = scanner.nextLine();
-        System.out.println("Enter password:");
-        String password = scanner.nextLine();
+    public boolean loginScanner(String username, String password){
         List<Account> accounts = accountService.findAccountByUsernameAndPassword(username, password);
         if (accounts.isEmpty()){
             System.out.println("login failed");
@@ -239,7 +235,7 @@ public class ScannerService {
                 System.out.println("Enter the appointmentdate (dd/MM/yyyy)");
                 date = exceptionHandlerService.checkIfDateEnteredCorrect();
             } while (date == null);
-            List<Appointment> appointment = appointmentService.findAppointmentByIdentificationAndAppointmentDate(id, date);
+            List<Appointment> appointment = appointmentService.findAppointmentByIdentificationAndAppointmentDate(patients.get(0), date);
             if (appointment.isEmpty()) {
                 System.out.println("Appointment doesn't exist");
             } else {
@@ -261,7 +257,7 @@ public class ScannerService {
                 System.out.println("Enter previous appointmentdate (dd/MM/yyyy)");
                 oldDate = exceptionHandlerService.checkIfDateEnteredCorrect();
             } while (oldDate == null);
-            List<Appointment> appointment = appointmentService.findAppointmentByIdentificationAndAppointmentDate(id, oldDate);
+            List<Appointment> appointment = appointmentService.findAppointmentByIdentificationAndAppointmentDate(patients.get(0), oldDate);
             if (appointment.isEmpty()) {
                 System.out.println("Appointment doesn't exist");
             } else {

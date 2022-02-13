@@ -1,14 +1,17 @@
 package healthcentremanagement.app;
 
 import healthcentremanagement.config.JPAConfiguration;
+import healthcentremanagement.entities.Account;
 import healthcentremanagement.facade.HealthcentreFacade;
+
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
 
         HealthcentreFacade access = new HealthcentreFacade();
         //login
-        //access.login();
+        access.login("admin", "admin123");
         //access.addNewAccount();
 
         //Healthcentre
@@ -17,7 +20,7 @@ public class Application {
         //FactoryAndCoRDesignPatterns
         //access.showDepartmentInfo(); //works
 
-        //access.checkPatientStatus();
+        access.checkPatientStatus();
 
         //Medicine
         //access.insertNewMedicine(); //works
@@ -36,7 +39,7 @@ public class Application {
         //access.updatePatient(); //works
 
         //Doctor
-        access.insertDoctor(); //works
+        //access.insertDoctor(); //works
         //access.deleteDoctor(); //works
         //access.updateDoctor(); /works
         //access.getAllDoctors(); //works

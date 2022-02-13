@@ -36,6 +36,10 @@ public class Patient {
     @OneToMany(mappedBy = "patient")
     private Set<Treatment> treatments;
 
+    public Patient(Identification identification) {
+        this.identification = identification;
+    }
+
     @Override
     public String toString() {
         return "\nPatient{" +

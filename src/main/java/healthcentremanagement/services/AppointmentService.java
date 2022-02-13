@@ -17,8 +17,8 @@ public class AppointmentService {
         appointments.forEach(System.out::println);
     }
 
-    public List<Appointment> findAppointmentByIdentificationAndAppointmentDate(String identification, LocalDate previousAppointmentDate){
-        return appointmentDao.findByIdentificationAndAppointmentdate(identification, previousAppointmentDate);
+    public List<Appointment> findAppointmentByIdentificationAndAppointmentDate(Patient patient, LocalDate previousAppointmentDate){
+        return appointmentDao.findByIdentificationAndAppointmentdate(patient, previousAppointmentDate);
     }
 
 

@@ -37,7 +37,7 @@ public class MedicineStock {
     public void makeDeposit(int quantityToDeposit, Medicine medicine) {
             medicineInStock = medicine.getStock();
             increaseMedicineInStock(quantityToDeposit);
-            medicineDao.updateMedicineStock(getMedicineInStock(), medicine.getName());
+            medicineDao.updateMedicineStock(medicineInStock, medicine.getName());
             System.out.println("Deposit complete: Current balance is " + getMedicineInStock());
     }
 

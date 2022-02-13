@@ -4,6 +4,7 @@ import healthcentremanagement.config.JPAConfiguration;
 import healthcentremanagement.dao.AccountDao;
 import healthcentremanagement.entities.Account;
 
+import javax.persistence.PersistenceException;
 import java.util.List;
 
 public class AccountService {
@@ -15,7 +16,12 @@ public class AccountService {
     }
 
     public void insertNewAccount(Account account){
-        System.out.println("Account inserted: " + accountDao.insertOneRecord(account));
+        try {
+            System.out.println("Account inserted: " + accountDao.insertOneRecord(account));
+        } catch(PersistenceException persistenceException){
+            System.out.println("Invalid: Username already exists");
+            System.exit(0);
+        }
     }
 
     public List<Account> findAccountByUsernameAndType(String username, String type){

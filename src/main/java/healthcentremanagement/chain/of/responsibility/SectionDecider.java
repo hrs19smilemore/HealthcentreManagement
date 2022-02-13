@@ -1,5 +1,7 @@
 package healthcentremanagement.chain.of.responsibility;
 
+import healthcentremanagement.adapter.PatientAdapter;
+import healthcentremanagement.adapter.PatientAdapterImplementation;
 import healthcentremanagement.config.JPAConfiguration;
 import healthcentremanagement.dao.PrescriptionDao;
 import healthcentremanagement.dao.AppointmentDao;
@@ -14,7 +16,9 @@ public class SectionDecider {
 
 
     public boolean haveappointment(Patient patient) {
-        if (appointmentDao.findByIdentificationAndAppointmentdate(patient.getIdentification(),
+        PatientAdapter adapter = new PatientAdapterImplementation(patient);
+        healthcentremanagement.entities.Patient patientEntity = adapter.getPatientEntity();
+        if (appointmentDao.findByIdentificationAndAppointmentdate(patientEntity,
                 patient.getCurrentdate()).isEmpty()) {
             return false;
         } else

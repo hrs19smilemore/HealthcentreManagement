@@ -61,12 +61,12 @@ public class AppointmentDao {
     }
 
 
-    public List<Appointment> findByIdentificationAndAppointmentdate(String identification, LocalDate appointmentDate) {
+    public List<Appointment> findByIdentificationAndAppointmentdate(Patient patient, LocalDate appointmentDate) {
         entityManager.getTransaction().begin();
         String jpql = "select a from Appointment a join Patient p on p.id = a.patient.id where " +
                 "p.identification.number = :identification and a.appointmentDate = :appointmentdate";
         TypedQuery<Appointment> query = entityManager.createQuery(jpql, Appointment.class);
-        query.setParameter("identification", identification);
+        query.setParameter("identification", patient.getIdentification().getNumber());
         query.setParameter("appointmentdate", appointmentDate);
         List<Appointment> appointments = query.getResultList();
         entityManager.getTransaction().commit();
